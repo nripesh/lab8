@@ -1,0 +1,34 @@
+ monitor is characterized by a set of programmer-defined operators.
+Implicit mutual exclusion (Not the programmer’s task)
+The idea of monitors is to separate these two concerns:  use locks for mutual exclusion and condition variables for scheduling constraints.  
+
+A monitor is a lock with zero or more conditional variables for managing concurrent access to shared data.  The lock provides mutual exclusion to the shared data.  A conditional variable allows a queue of waiting threads while being inside a critical section.
+
+Lock :A lock provides two operations:
+
+	Lock::Acquire ()  
+ 	// wait until the lock is free, then grab it
+	Lock::Release ()  
+          // unlock, wake up anyone waiting in Acquire
+
+     Condition variable: The value of the condition variable cv is a FIFO queue of    delayed processes.
+            A process blocks on a condition variable by executing wait (cv);
+Signal (cv) awakens the front of the queue
+
+                      
+
+
+
+                    Implementation: Reader - Writer problem
+
+      Constraints
+
+1. A reader should wait when a writer is accessing or waiting for the database (Condition okToRead).  (The writer has a higher priority over reader, since it is more difficult for a writer to achieve exclusive access of the database.)  
+
+2. A writer should wait when there is a reader or a writer accessing the database (Condition okToWrite).
+
+3. A reader or a writer should wait when someone is modifying global states (Lock lock).
+
+
+
+
