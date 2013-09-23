@@ -1,0 +1,114 @@
+<html>
+<head>
+<style type="text/css">
+#b1
+{
+position:absolute;
+left:50px;
+top:300px;
+}
+#b2
+{
+position:absolute;
+right:10px;
+top:300px;
+
+}
+#t1
+{
+position:absolute;
+left:420px;
+}
+#b3
+{
+position:absolute;
+left:50px;
+top:500px;
+
+}
+#b4
+{
+position:absolute;
+right:50px;
+top:500px;
+
+}
+
+</style>
+</head>
+<body>
+<div id="t1">
+<textarea rows="10" cols="50" name="resi" align="center">
+</textarea>
+</div>
+<div id="b1">
+<img src="images2.jpg" alt="some_text" height="200px" width="170px"> 
+ </div>
+<div id="b2">
+<img src="image1.jpg" alt="some_text"height="200px" width="200px">
+</div>
+<script>
+var n;
+function moveDomObj(id,left,right,top,bottom)
+{
+  var domObj = document.getElementById(id);
+domObj.style.left = left+"px";
+  domObj.style.top = top+"px";
+domObj.style.right = right+"px";
+domObj.style.bottom = bottom+"px";
+}
+ 
+var timer2 = null;
+var timer1 = null;
+  
+var a=100;
+var b=200;
+function s1()
+{ 
+var x=a;
+var y=b;
+ moveDomObj("b1",x,200,b,0);
+a+=10;
+b-=10;
+if(a<=260)
+timer2 = setTimeout(s1, 500);
+else
+a=0;
+}
+var c=180;
+var d=210;
+
+function s2()
+{ 
+var x=c;
+var y=d;
+ moveDomObj("b2",800,x,d,0);
+c+=10;
+d-=10;
+if(c<=400)
+timer1 = setTimeout(s2, 500);
+else
+c=0;
+}
+var e=400;
+var f=0;
+function s3()
+{ 
+var x=e;
+var y=f;
+ moveDomObj("b2",800,x,d,0);
+e-=10;
+f+=10;
+if(c>=400)
+timer1 = setTimeout(s3, 500);
+}
+</script>
+<div id="b3">
+<input type="radio" name="animation"onclick="s1()">writer<br>
+</div>
+<div id="b4">
+<input type="radio" name="animation"onclick="s2()">reader<br>
+<input type="radio" name="animation"onclick="s3()">reader1<br>
+</div>
+</body>
+</html>
