@@ -1,0 +1,25 @@
+SLEEPING BARBER PROBLEM
+
+Scenario
+Consider a barber’s shop where there is only one barber, one barber chair and a number of waiting chairs for the customers.
+When there are no customers the barber sits on the barber chair and sleeps.   
+ When a customer arrives he awakes the barber or waits in one of the vacant chairs if the barber is cutting someone else’s hair.                              
+ When all the chairs are full, the newly arrived customer simply leaves.
+
+Critical Section Problem
+There might be a scenario in which the customer ends up waiting on a barber and a barber waiting on the customer, which would result to a deadlock.
+Then there might also be a case of starvation when the customers don’t follow an order to cut hair, as some people won’t get a haircut even though they had been waiting long.
+
+A scenario (sequential behavior) of the barber thread is : 
+{assertion: no customer is in the barber room} barber waits until a customer is in the waiting room; 
+{assertion: met a customer} barber starts cutting the customer's hair; 
+ barber finishes the hair cut and informs the customer; 
+ barber waits until the customer leaves the barber room. 
+A scenario for the customer thread is : 
+customer checks if the waiting room is full, if so, leaves, else enters the waiting room 
+customer waits until the barber becomes free; 
+{assertion: met the barber} customer leaves the waiting room and enters the barber room; 
+waits until the barber finishes the hair cut ; 
+{assertion: hair cut is done} customer leaves the barber room. 
+
+

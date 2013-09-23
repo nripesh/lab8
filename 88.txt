@@ -1,0 +1,16 @@
+
+               resource
+Process1          ¥               Process2
+
+O                                    O 
+Wait                                 wait
+Signal                              signal
+
+A  semaphore S is an integer variable that,apart from initialization ,is accessed only through  two atomic operations :wait() and signal().
+All modification to the integer value of the semaphore in the wait() and signal operations must be executed indivisibly.That is when one process
+modifies the semsphore value no other process can simultaneously modify that same semaphore value.
+         The main disadvantage of the semaphore definition given here is that it requires busy waiting. While a process is in its critical section ,any other process that tries to enter its critical section must loop continuously in the entry code.This continual looping is clearly a problem in a real multiprograming  system,where a single cpu cpu is shared among processes.Busy waiting wastes cpu cycles that some other process might be able to use productively.This type of semaphore is also called a spin lock because the process spins while waiting for the lock.
+To overcome the nees for busy waiting we can modify the definition of the wait() and signal() semaphore operations.
+when a process'sassociated wait button is pressed and find the semaphore value is not positive ,it must wait.however rather than engaging in busy waiting ,the process can block itself.The block operation places a process into ready queue associated with the semaphore,and the state of the process is switched to the waiting state.The control is passes to the cpu scheduler which selects another process to execute.
+   scenerio:We are going to do it by javascript animation to desribe the whole scenerio for showing the state buttons will be used. A process can take the  resource at a time.
+
